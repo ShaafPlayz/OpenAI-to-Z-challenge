@@ -10,6 +10,15 @@ This project demonstrates various OpenAI capabilities and integrations:
 - **Research Notebooks**: Interactive exploration and experimentation
 - **Multiple AI Model Access**: Including GitHub Models integration
 
+## 🧪 Research Areas
+
+This repository explores:
+- Natural Language Processing with OpenAI
+- Geospatial AI applications
+- Multi-modal AI interactions
+- Environmental data analysis
+- AI-powered mapping solutions
+
 ## 📁 Project Structure
 
 ```
@@ -98,30 +107,6 @@ jupyter notebook openai-research.ipynb
 - **python-dotenv**: Environment variable management
 - **pandas**: Data manipulation and analysis
 - **jupyter**: Interactive computing environment
-
-## 🔑 API Keys Required
-
-1. **OpenAI API Key**: Get from [OpenAI Platform](https://platform.openai.com/)
-2. **GitHub Token**: For GitHub Models access
-3. **Google Earth Engine**: Sign up at [Google Earth Engine](https://earthengine.google.com/)
-
-## 🚀 Features
-
-- ✅ OpenAI GPT integration
-- ✅ GitHub Models access
-- ✅ Google Earth Engine geospatial analysis
-- ✅ Jupyter notebook research environment
-- ✅ Environment management with conda
-- ✅ Secure API key handling
-
-## 🧪 Research Areas
-
-This repository explores:
-- Natural Language Processing with OpenAI
-- Geospatial AI applications
-- Multi-modal AI interactions
-- Environmental data analysis
-- AI-powered mapping solutions
 
 ## 📄 License
 
