@@ -1,0 +1,14 @@
+# Core packages for OpenAI and Google Earth Engine project
+openai>=1.0.0
+earthengine-api>=0.1.0
+geemap>=0.20.0
+python-dotenv>=0.19.0
+
+# Data science essentials
+pandas>=1.3.0
+numpy>=1.21.0
+matplotlib>=3.5.0
+
+# Optional but commonly used
+jupyter>=1.0.0
+requests>=2.25.0
