@@ -2,6 +2,12 @@
 
 This repository contains Shaaf's comprehensive exploration of OpenAI technologies, from A to Z, including integration with Google Earth Engine for geospatial AI applications.
 
+## Current CheckPoint Output
+![image](https://github.com/user-attachments/assets/1033fd95-0a25-473e-9f78-d2d27ef08bc7)
+
+
+
+
 ## 🚀 Project Overview
 
 This project demonstrates various OpenAI capabilities and integrations:
