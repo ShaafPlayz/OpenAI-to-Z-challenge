@@ -21,18 +21,6 @@ This repository explores:
 - Interactive widget development for data visualization
 - Jupyter notebook optimization for geospatial workflows
 
-## 🚀 Features
-
-- ✅ OpenAI GPT integration
-- ✅ GitHub Models access  
-- ✅ Google Earth Engine geospatial analysis
-- ✅ Jupyter notebook research environment
-- ✅ Environment management with conda
-- ✅ Secure API key handling
-- ✅ Interactive mapping widgets (VS Code + Jupyter)
-- ✅ Widget troubleshooting and fallback options
-- ✅ HTML map export for universal viewing
-
 ## 📁 Project Structure
 
 ```
