@@ -18,6 +18,20 @@ This repository explores:
 - Multi-modal AI interactions
 - Environmental data analysis
 - AI-powered mapping solutions
+- Interactive widget development for data visualization
+- Jupyter notebook optimization for geospatial workflows
+
+## 🚀 Features
+
+- ✅ OpenAI GPT integration
+- ✅ GitHub Models access  
+- ✅ Google Earth Engine geospatial analysis
+- ✅ Jupyter notebook research environment
+- ✅ Environment management with conda
+- ✅ Secure API key handling
+- ✅ Interactive mapping widgets (VS Code + Jupyter)
+- ✅ Widget troubleshooting and fallback options
+- ✅ HTML map export for universal viewing
 
 ## 📁 Project Structure
 
@@ -27,10 +41,14 @@ OpenAI-to-Z-challenge/
 ├── OpenAI-o3.py             # OpenAI o3 model experiments
 ├── GoogleEarthEngine.py     # Google Earth Engine integration
 ├── Offical_OpenAI_Key.py    # API key management
-├── openai-research.ipynb    # Jupyter notebook for research
+├── openai-research.ipynb    # General OpenAI research notebook
+├── EarthEngineResearch.ipynb # Google Earth Engine research notebook
+├── test_widget.py           # Widget testing and troubleshooting
+├── earth_engine_map.html    # Generated HTML map (backup display)
 ├── requirements.txt         # Full environment dependencies
 ├── requirements-minimal.txt # Essential project dependencies
 ├── environment.yml          # Conda environment configuration
+├── sat/                     # Satellite data and analysis
 ├── .env                     # Environment variables (not in repo)
 └── README.md               # This file
 ```
@@ -96,7 +114,23 @@ python GoogleEarthEngine.py
 
 ### Jupyter Research
 ```bash
+# General OpenAI research
 jupyter notebook openai-research.ipynb
+
+# Google Earth Engine research
+jupyter notebook EarthEngineResearch.ipynb
+```
+
+### Widget Troubleshooting
+If widgets don't display in Jupyter notebook:
+```bash
+# Test widget functionality
+python test_widget.py
+
+# Upgrade ipywidgets (if needed)
+pip install --upgrade ipywidgets
+
+# Restart Jupyter server after upgrade
 ```
 
 ## 📦 Key Dependencies
@@ -104,9 +138,22 @@ jupyter notebook openai-research.ipynb
 - **openai**: OpenAI API client
 - **earthengine-api**: Google Earth Engine Python API
 - **geemap**: Interactive mapping with Google Earth Engine
+- **ipywidgets**: Interactive widgets for Jupyter (v8.1.7+)
 - **python-dotenv**: Environment variable management
 - **pandas**: Data manipulation and analysis
 - **jupyter**: Interactive computing environment
+
+## 🔧 Known Issues & Solutions
+
+### Widget Display Issues
+- **Problem**: "Error displaying widget" in Jupyter notebooks
+- **Solution**: Upgraded to ipywidgets 8.1.7, added widget configuration cells
+- **Fallback**: HTML export available (`earth_engine_map.html`)
+
+### Environment Setup
+- **Conda Environment**: `OpenAI-GoogleEngine` 
+- **Python**: 3.12.4
+- **Widget Support**: Works in VS Code, configured for Jupyter notebook
 
 ## 📄 License
 
