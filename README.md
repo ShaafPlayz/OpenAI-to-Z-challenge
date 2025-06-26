@@ -1,32 +1,67 @@
-# OpenAI-to-Z Challenge
+# 🌍 AI-Powered Amazon Rainforest Anomaly Detection
 
-This repository contains Shaaf's comprehensive exploration of OpenAI technologies, from A to Z, including integration with Google Earth Engine for geospatial AI applications and satellite imagery analysis.
+**Hackathon Submission**: Automated detection of deforestation and land-use changes in the Amazon rainforest using OpenAI GPT-4.1 vision models and satellite imagery.
 
-## Current CheckPoint Output
+
+## Current Problem
+Modis dataset is very coarse, it has a 500m accuracy. I need to get a much sharper dataset.
+
+## 🎯 What It Does
+
+This system automatically detects environmental changes in the Amazon rainforest by:
+1. **Fetching current satellite imagery** from Google Earth Engine (Sentinel-2)
+2. **Comparing with historical data** (MODIS 2020 baseline)
+3. **Using AI vision models** to identify deforestation, construction, and land-use changes
+4. **Generating detailed reports** with coordinates and analysis
+
+## ⚡ Quick Demo
 ![image](https://github.com/user-attachments/assets/1033fd95-0a25-473e-9f78-d2d27ef08bc7)
 
+## 🚀 Key Features
 
+- **AI-Powered Analysis**: GPT-4.1 vision model analyzes satellite imagery
+- **Real Satellite Data**: Live Sentinel-2 imagery via Google Earth Engine
+- **Automated Detection**: Identifies deforestation, roads, and urban expansion
+- **Geographic Validation**: Analysis constrained to Amazon rainforest boundaries
+- **Batch Processing**: Analyzes multiple locations automatically
 
+## 🛠️ Quick Start (5 Minutes)
 
-## 🚀 Project Overview
+### Prerequisites
+- Python 3.12+
+- GitHub Token (free)
+- Google Earth Engine account (free)
 
-This project demonstrates advanced AI capabilities combining OpenAI's vision models with satellite imagery:
-- **OpenAI Vision API Integration**: Multi-modal AI for satellite image analysis
-- **Google Earth Engine Integration**: Sentinel-2 satellite data processing
-- **Satellite Imagery Analysis**: Automated surface feature identification
-- **Research Notebooks**: Interactive exploration and experimentation
-- **Multiple AI Model Access**: Including GitHub Models integration
+### 1. Clone & Setup
+```bash
+git clone https://github.com/ShaafPlayz/OpenAI-to-Z-challenge.git
+cd OpenAI-to-Z-challenge
+pip install -r requirements-minimal.txt
+```
 
-## 🧪 Research Areas
+### 2. Configure APIs
+Create `.env` file:
+```env
+GITHUB_TOKEN=your_github_token_here
+```
 
-This repository explores cutting-edge applications of AI in geospatial analysis:
-- **Multi-modal AI**: Combining satellite imagery with natural language processing
-- **Environmental Monitoring**: Using Sentinel-2 and MODIS data for comprehensive surface analysis
-- **Land Cover Classification**: MODIS PFT (Plant Functional Type) analysis with AI interpretation
-- **Cloud Computing**: Leveraging Google Earth Engine's planetary-scale data
-- **Computer Vision**: Automated interpretation of satellite imagery
-- **External Dataset Integration**: NASA AppEEARS data processing and analysis
-- **Geospatial AI**: Location-based analysis and mapping solutions
+### 3. Google Earth Engine Setup
+```bash
+earthengine authenticate
+# Follow the browser authentication
+```
+
+### 4. Run the Analysis
+```bash
+jupyter notebook "GEE and OpenAI Research.ipynb"
+# Open the notebook and run all cells
+```
+
+**That's it!** The system will automatically:
+- Generate random points in the Amazon rainforest
+- Fetch current satellite imagery
+- Compare with historical land cover data
+- Use AI to detect and report anomalies
 
 ## 📁 Project Structure
 
@@ -42,12 +77,14 @@ OpenAI-to-Z-challenge/
 ├── 📓 GEE and OpenAI Research.ipynb          # Main research notebook
 ├── 📁 .git/                                 # Git repository data
 ├── 📁 .ipynb_checkpoints/                    # Jupyter notebook checkpoints
-├── 📁 amazon_biome_border/                   # Amazon biome shapefile data
-│   ├── 🗺️ amazon_biome_border.cpg           # Character encoding info
-│   ├── 🗺️ amazon_biome_border.dbf           # Attribute data
-│   ├── 🗺️ amazon_biome_border.prj           # Projection information
-│   ├── 🗺️ amazon_biome_border.shp           # Shapefile geometry
-│   └── 🗺️ amazon_biome_border.shx           # Shapefile index
+├── 📁 amazonia_boundary_proposal/              # Amazon boundary shapefiles
+│   ├── 🗺️ amazonia_polygons.dbf              # Shapefile attribute data
+│   ├── 🗺️ amazonia_polygons.prj              # Projection information
+│   ├── 🗺️ amazonia_polygons.sbn              # Spatial index binary
+│   ├── 🗺️ amazonia_polygons.sbx              # Spatial index
+│   ├── 🗺️ amazonia_polygons.shp              # Main shapefile geometry
+│   ├── 🗺️ amazonia_polygons.shp.xml          # Metadata
+│   └── 🗺️ amazonia_polygons.shx              # Shapefile index
 ├── 📁 AppEEARS/                             # NASA AppEEARS MODIS datasets
 │   ├── 🗺️ MCD12Q1.061_LC_Prop2_doy2020001_aid0001.tif  # MODIS 2020 land cover
 │   ├── 🗺️ MCD12Q1.061_LC_Prop2_doy2021001_aid0001.tif  # MODIS 2021 land cover
@@ -59,7 +96,8 @@ OpenAI-to-Z-challenge/
 │   └── 🗺️ MCD12Q1.061_QC_doy2023001_aid0001.tif        # MODIS 2023 quality control
 ├── 📁 AppEEARSjpg/                          # Processed MODIS imagery (empty)
 ├── 📁 Resources/                            # Additional resources
-│   └── 🗂️ amazon_biome_border.zip          # Zipped shapefile data
+│   ├── 🗂️ amazon_biome_border.zip          # Original biome shapefile data
+│   └── 🗂️ amazonia_boundary_proposal_Eva_2005 (1).zip  # Boundary proposal data
 ├── 📁 satimagery/                           # Satellite imagery data
 │   ├── 🖼️ sentinel_rgb.jpg                  # Processed RGB satellite image
 │   └── 🗺️ sentinel_rgb.tif                  # Raw satellite data (GeoTIFF)
@@ -73,39 +111,27 @@ OpenAI-to-Z-challenge/
     └── 📓 openai-research.ipynb              # Additional research notebook
 ```
 
-## 🛰️ Satellite Imagery Analysis
+## � How It Works
 
-The main research notebook (`GEE and OpenAI Research.ipynb`) demonstrates a comprehensive multi-dataset analysis workflow:
+### The Analysis Pipeline
+1. **Boundary Validation**: Ensures coordinates are within Amazon rainforest
+2. **Satellite Data Fetch**: Downloads current Sentinel-2 imagery (10m resolution)
+3. **Historical Lookup**: Retrieves MODIS 2020 land cover classification
+4. **AI Analysis**: GPT-4.1 compares current vs. historical imagery
+5. **Anomaly Detection**: Reports deforestation, construction, or land-use changes
 
-### Data Processing Pipeline
-1. **Sentinel-2 Data Collection**: Automated cloud-masked satellite imagery from Amazon rainforest
-2. **Image Processing**: Converting GeoTIFF to RGB format for AI analysis
-3. **Multi-modal AI Analysis**: Using OpenAI's vision models to describe surface features
-4. **MODIS Land Cover Analysis**: External NASA AppEEARS dataset integration
-5. **Automated Interpretation**: Natural language descriptions and formatted reports
+### Key Functions
+- `find_and_log_anomalies()`: Main detection pipeline
+- `getAmazoniaAnalysisPoints()`: Generates valid Amazon coordinates
+- `get_modis_class_for_point()`: Gets historical land cover data
+- `promptGPT()`: Sends imagery to AI for analysis
 
-### Advanced Features
-- **Modular Function Architecture**: Streamlined workflow with reusable functions
-- **Multi-Dataset Integration**: Combining Google Earth Engine and NASA AppEEARS data
-- **System Role Prompting**: AI configured as a geospatial analyst for domain-specific responses
-- **Automated Report Generation**: Markdown-formatted analysis reports
-- **Land Cover Classification**: MODIS PFT (Plant Functional Type) pixel analysis
-
-### Key Datasets
-- **Primary**: Copernicus Sentinel-2 SR Harmonized (Google Earth Engine)
-- **Secondary**: MODIS MCD12Q1.061 Land Cover Type (NASA AppEEARS)
-  - Multi-year time series: 2020-2023 annual land cover data
-  - Quality control datasets for each year
-- **Geospatial**: Amazon biome boundary shapefile data
-- **Location**: Manaus, Brazil (Amazon Rainforest region)
-- **Time Range**: 2023-2024 Sentinel-2 imagery with cloud filtering
-- **AI Model**: GPT-4.1 vision capabilities via GitHub Models
-
-### Analysis Capabilities
-- **Surface Feature Detection**: Automated identification of vegetation, water bodies, urban areas
-- **Land Cover Statistics**: Pixel-level classification and reporting
-- **Multi-spectral Analysis**: RGB band processing and enhancement
-- **Geospatial Context**: Location-specific analysis with coordinate-based queries
+## 📊 Sample Output
+```
+Footprint ID: 1 at (-2.8234, -60.1234)
+Historical (MODIS) Class: Evergreen Needleleaf Trees
+Status: Anomaly Found - Construction activity detected
+```
 
 ## 🛠️ Setup Instructions
 
@@ -229,86 +255,24 @@ The system can identify and quantify:
 - **Urban Areas**: Human settlement detection
 - **Unknown/No Data**: Data quality assessment
 
-## 📦 Key Dependencies
+## � Tech Stack
 
-### Core Libraries
-- **openai**: OpenAI API client for GPT models
-- **earthengine-api**: Google Earth Engine Python API
-- **geemap**: Interactive mapping with Google Earth Engine
-- **python-dotenv**: Environment variable management
+- **AI Model**: OpenAI GPT-4.1 (via GitHub Models API)
+- **Satellite Data**: Google Earth Engine (Sentinel-2)
+- **Historical Data**: NASA MODIS Land Cover (2020-2023)
+- **Languages**: Python, Jupyter Notebooks
+- **Key Libraries**: `openai`, `earthengine-api`, `geopandas`, `rasterio`
 
-### Data Processing
-- **Pillow (PIL)**: Image processing and format conversion
-- **numpy**: Numerical computing for image arrays
-- **rasterio**: Geographic raster data I/O for TIFF files
-- **h5py**: HDF5 file format support
-- **requests**: HTTP library for data downloads
+## 🎯 Impact
 
-### Geospatial Analysis
-- **shapely**: Geometric objects and spatial operations
-- **folium**: Interactive map visualizations
-- **collections.Counter**: Data counting and statistics
-
-### Development Environment
-- **jupyter**: Interactive computing environment
-- **ipython**: Enhanced interactive Python shell
-- **IPython.display**: Rich display capabilities for notebooks
-
-### Satellite Data Processing
-- **GDAL**: Geospatial Data Abstraction Library (via earthengine-api)
-- **Rasterio**: Geographic raster data I/O (indirect dependency)
-
-## 🚀 Features
-
-### Core Capabilities
-- **Automated Satellite Data Collection**: Fetch and process Sentinel-2 imagery
-- **Multi-Dataset Integration**: Combine Google Earth Engine with NASA AppEEARS data
-- **Cloud Masking**: Automatic cloud filtering for clearer imagery
-- **Multi-format Export**: TIF and JPG image generation
-- **AI-Powered Analysis**: Computer vision analysis of satellite imagery
-
-### Advanced Analysis
-- **MODIS Land Cover Processing**: Automated PFT classification and pixel counting
-- **Interactive Mapping**: Visualize satellite data with geemap and folium
-- **Base64 Encoding**: Prepare images for AI model consumption
-- **System Role Configuration**: AI assistant configured as geospatial analyst
-- **Modular Function Architecture**: Reusable, well-structured code organization
-
-### Output Generation
-- **Natural Language Descriptions**: Human-readable surface feature analysis
-- **Formatted Reports**: Markdown-structured analysis reports
-- **Statistical Summaries**: Land cover classification statistics
-- **Multi-modal Responses**: Text and visual data integration
-
-## 🔮 Future Enhancements
-
-### Data Integration
-- Time-series analysis of environmental changes
-- Multi-spectral band analysis beyond RGB
-- Integration with additional satellite data sources (Landsat, MODIS, etc.)
-- Real-time data streaming from multiple sensors
-
-### Analysis Capabilities  
-- Automated change detection between time periods
-- Machine learning classification models
-- Vegetation health index calculations
-- Deforestation monitoring and alerts
-
-### User Interface
-- Web interface for interactive analysis
-- Dashboard for real-time monitoring
-- API endpoints for programmatic access
-- Mobile app for field validation
-
-### Reporting and Visualization
-- Automated PDF report generation
-- Interactive web maps with time sliders
-- 3D visualization of terrain and vegetation
-- Export to GIS formats for further analysis
-
-## �📄 License
-
-This project is part of the OpenAI to Z challenge educational initiative.
+This system can help:
+- **Environmental Organizations**: Monitor deforestation in real-time
+- **Government Agencies**: Track illegal logging and land-use violations
+- **Research Institutions**: Study climate change impacts
+- **Conservation Efforts**: Protect endangered ecosystems
 
 ---
-*Last updated: June 17, 2025*
+
+**Ready to try it?** Just run the Quick Start above! 🚀
+
+*Hackathon Submission - June, 2025*
