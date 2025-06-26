@@ -15,7 +15,7 @@ This system automatically detects environmental changes in the Amazon rainforest
 4. **Generating detailed reports** with coordinates and analysis
 
 ## ⚡ Quick Demo
-![image](https://github.com/user-attachments/assets/1033fd95-0a25-473e-9f78-d2d27ef08bc7)
+![image](https://github.com/user-attachments/assets/3b4ecc0e-0709-4b1f-9f23-a86120be9847)
 
 ## 🚀 Key Features
 
