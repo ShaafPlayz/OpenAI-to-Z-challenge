@@ -1,4 +1,4 @@
-# 🌍 Amazon Rainforest Anomaly Detection
+# Amazon Rainforest Anomaly Detection
 
 **Hackathon Submission**: Automated detection of deforestation and land-use changes in the Amazon rainforest using OpenAI GPT-4.1 vision models and satellite imagery.
 
@@ -186,7 +186,7 @@ Status: Anomaly Found - Construction activity detected
    # Replace 'your-project-id' with your actual GEE project ID
    ```
 
-## 🔧 Usage
+## Usage
 
 ### Main Research Notebook
 ```bash
