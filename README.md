@@ -1,4 +1,4 @@
-# 🌍 AI-Powered Amazon Rainforest Anomaly Detection
+# 🌍 Amazon Rainforest Anomaly Detection
 
 **Hackathon Submission**: Automated detection of deforestation and land-use changes in the Amazon rainforest using OpenAI GPT-4.1 vision models and satellite imagery.
 
@@ -6,7 +6,7 @@
 ## Current Problem
 Modis dataset is very coarse, it has a 500m accuracy. I need to get a much sharper dataset.
 
-## 🎯 What It Does
+##  What It Does
 
 This system automatically detects environmental changes in the Amazon rainforest by:
 1. **Fetching current satellite imagery** from Google Earth Engine (Sentinel-2)
@@ -14,10 +14,10 @@ This system automatically detects environmental changes in the Amazon rainforest
 3. **Using AI vision models** to identify deforestation, construction, and land-use changes
 4. **Generating detailed reports** with coordinates and analysis
 
-## ⚡ Quick Demo
+## Quick Demo
 ![image](https://github.com/user-attachments/assets/3b4ecc0e-0709-4b1f-9f23-a86120be9847)
 
-## 🚀 Key Features
+## Key Features
 
 - **AI-Powered Analysis**: GPT-4.1 vision model analyzes satellite imagery
 - **Real Satellite Data**: Live Sentinel-2 imagery via Google Earth Engine
@@ -25,7 +25,7 @@ This system automatically detects environmental changes in the Amazon rainforest
 - **Geographic Validation**: Analysis constrained to Amazon rainforest boundaries
 - **Batch Processing**: Analyzes multiple locations automatically
 
-## 🛠️ Quick Start (5 Minutes)
+## Quick Start (5 Minutes)
 
 ### Prerequisites
 - Python 3.12+
@@ -126,14 +126,14 @@ OpenAI-to-Z-challenge/
 - `get_modis_class_for_point()`: Gets historical land cover data
 - `promptGPT()`: Sends imagery to AI for analysis
 
-## 📊 Sample Output
+## Sample Output
 ```
 Footprint ID: 1 at (-2.8234, -60.1234)
 Historical (MODIS) Class: Evergreen Needleleaf Trees
 Status: Anomaly Found - Construction activity detected
 ```
 
-## 🛠️ Setup Instructions
+## Setup Instructions
 
 ### Prerequisites
 - Python 3.12+ 
